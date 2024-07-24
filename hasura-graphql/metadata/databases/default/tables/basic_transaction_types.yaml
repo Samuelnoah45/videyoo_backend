@@ -1,4 +1,0 @@
-table:
-  name: transaction_types
-  schema: basic
-is_enum: true
