@@ -9,9 +9,6 @@ import (
 	log "server/logs"
 	db "server/pkgs/DB"
 	auth_router "server/pkgs/auth/router"
-	fileupload "server/pkgs/file_upload"
-	request_router "server/pkgs/request/router"
-	transaction_router "server/pkgs/transaction/router"
 )
 
 func main() {
@@ -26,13 +23,7 @@ func main() {
 	router := gin.Default()
 	// Auth routes
 	auth_router.SetupRoutes(router)
-	// Request routes
-	request_router.SetupRoutes(router)
-	// Transaction routes
 
-	transaction_router.SetupRoutes(router)
-
-	router.POST("/file_upload", fileupload.UploadImage)
 	// File upload router
 	router.Run(fmt.Sprintf(":%s", config.PORT))
 }

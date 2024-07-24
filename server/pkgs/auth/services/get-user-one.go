@@ -3,6 +3,7 @@ package auth_services
 // imports
 import (
 	"context"
+
 	graphqlClient "server/clients/graphql"
 	authModel "server/pkgs/auth/models"
 )
@@ -34,12 +35,11 @@ func GetUser(id string) (authModel.User, error) {
 
 	}
 	user := authModel.User{
-		ID:          query.User_users_by_pk.ID,
-		FirstName:   query.User_users_by_pk.First_name,
-		LastName:    query.User_users_by_pk.Last_name,
-		Email:       query.User_users_by_pk.Email,
-		PhoneNumber: query.User_users_by_pk.Phone_number,
-		UserRoles:   []string{},
+		ID:        query.User_users_by_pk.ID,
+		FirstName: query.User_users_by_pk.First_name,
+		LastName:  query.User_users_by_pk.Last_name,
+		Email:     query.User_users_by_pk.Email,
+		UserRoles: []string{},
 	}
 	return user, nil
 }

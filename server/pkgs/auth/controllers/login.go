@@ -5,14 +5,14 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	graphqlClient "server/clients/graphql"
 	"strings"
-
-	authModel "server/pkgs/auth/models"
-	"server/utilService"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
+
+	graphqlClient "server/clients/graphql"
+	authModel "server/pkgs/auth/models"
+	"server/utilService"
 )
 
 // login controller
@@ -43,19 +43,15 @@ func Login(ctx *gin.Context) {
 	}
 	var query struct {
 		Users []struct {
-			ID                  string `json:"id"`
-			First_name          string `json:"first_name"`
-			Last_name           string `json:"last_name"`
-			Email               string `json:"email"`
-			Password            string `json:"password"`
-			Photo_url           string `json:"photo_url"`
-			Gender              string `json:"gender"`
-			Phone_number        string `json:"phone_number"`
-			Is_account_verified bool   `json:"is_account_verified"`
-			User_roles          []struct {
+			ID         string `json:"id"`
+			First_name string `json:"first_name"`
+			Last_name  string `json:"last_name"`
+			Email      string `json:"email"`
+			Password   string `json:"password"`
+			User_roles []struct {
 				Role_name string `json:"role_name"`
 			} `json:"user_roles"`
-		} `graphql:"user_users(where: {email: {_eq: $email}})"`
+		} `graphql:"users(where: {email: {_eq: $email}})"`
 	}
 
 	variables := map[string]interface{}{
@@ -74,10 +70,6 @@ func Login(ctx *gin.Context) {
 	}
 
 	// check if the account is verified
-	if len(query.Users) > 0 && !query.Users[0].Is_account_verified {
-		ctx.JSON(400, gin.H{"message": "Unverified account"})
-		return
-	}
 
 	user_roles := []string{}
 	for _, role := range query.Users[0].User_roles {
@@ -91,10 +83,7 @@ func Login(ctx *gin.Context) {
 		user.Email = query.Users[0].Email
 		user.FirstName = query.Users[0].First_name
 		user.LastName = query.Users[0].Last_name
-		user.PhoneNumber = query.Users[0].Phone_number
-		user.PhotoUrl = query.Users[0].Photo_url
 		user.UserRoles = user_roles
-		user.Gender = query.Users[0].Gender
 		sendTokenAndUserData(ctx, user)
 		return
 	} else {

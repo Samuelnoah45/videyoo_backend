@@ -1,6 +1,13 @@
-actions: []
+actions:
+  - name: signup
+    definition:
+      kind: synchronous
+      handler: '{{ACTION_BASE_URL}}/sign_up'
+    comment: sign_up
 custom_types:
-    enums: []
-    input_objects: []
-    objects: []
-    scalars: []
+  enums: []
+  input_objects:
+    - name: signUpInput
+  objects:
+    - name: signUpOutput
+  scalars: []

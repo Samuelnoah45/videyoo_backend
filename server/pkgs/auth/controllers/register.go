@@ -5,14 +5,13 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	graphqlClient "server/clients/graphql"
-
-	authModel "server/pkgs/auth/models"
-	authService "server/pkgs/auth/services"
-
-	"github.com/go-playground/validator/v10"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
+
+	graphqlClient "server/clients/graphql"
+	authModel "server/pkgs/auth/models"
+	authService "server/pkgs/auth/services"
 )
 
 type user_user_roles_arr_rel_insert_input map[string]interface{}
@@ -49,7 +48,7 @@ func Register(ctx *gin.Context) {
 			Returning []struct {
 				ID string `json:"id"`
 			} `json:"returning"`
-		} `graphql:"insert_user_users(objects: {first_name: $first_name, last_name: $last_name,gender: $gender, email: $email, phone_number: $phone_number, user_roles: $user_roles})"`
+		} `graphql:"insert_user_users(objects: {first_name: $first_name, last_name: $last_name, email: $email, user_roles: $user_roles})"`
 	}
 
 	//4.  construct graphql variable
@@ -67,11 +66,9 @@ func Register(ctx *gin.Context) {
 	})
 
 	variables := map[string]interface{}{
-		"first_name":   newUser.FirstName,
-		"last_name":    newUser.LastName,
-		"email":        newUser.Email,
-		"gender":       newUser.Gender,
-		"phone_number": newUser.PhoneNumber,
+		"first_name": newUser.FirstName,
+		"last_name":  newUser.LastName,
+		"email":      newUser.Email,
 		"user_roles": user_user_roles_arr_rel_insert_input{
 			"data": userRoles,
 		},

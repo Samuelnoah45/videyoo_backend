@@ -5,15 +5,14 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	graphqlClient "server/clients/graphql"
-	authModel "server/pkgs/auth/models"
 	"strings"
 
-	"server/utilService"
-
+	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 
-	"github.com/gin-gonic/gin"
+	graphqlClient "server/clients/graphql"
+	authModel "server/pkgs/auth/models"
+	"server/utilService"
 )
 
 // Reset Password by email controller
@@ -122,10 +121,7 @@ func ResetPasswordByEmail(ctx *gin.Context) {
 		user.Email = query.Users[0].Email
 		user.FirstName = query.Users[0].First_name
 		user.LastName = query.Users[0].Last_name
-		user.PhoneNumber = query.Users[0].Phone_number
-		user.PhotoUrl = query.Users[0].Photo_url
 		user.UserRoles = user_roles
-		user.Gender = query.Users[0].Gender
 		sendTokenAndUserData(ctx, user)
 
 	} else {
