@@ -1,0 +1,17 @@
+version: "3.6"
+services:
+  graph:
+    container_name: vasco_centeral_managment_graphql_v1
+    network_mode: host
+    image: hasura/graphql-engine:v2.34.0
+    env_file:
+      - .env
+  server:
+    container_name: vasco_centeral_managment_server_v1
+    network_mode: host
+    build:
+      dockerfile: server.dockerfile
+      context: .
+    # restart: always
+    env_file:
+      - .env

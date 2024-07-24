@@ -1,0 +1,2 @@
+CREATE TABLE "stock"."warehouse_products" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "product_id" uuid NOT NULL, "warehouse_id" uuid NOT NULL, "quantity" numeric NOT NULL, "price" numeric NOT NULL, "is_new" boolean NOT NULL DEFAULT True, "created_at" timestamptz NOT NULL DEFAULT now(), PRIMARY KEY ("id") , FOREIGN KEY ("warehouse_id") REFERENCES "stock"."warehouses"("id") ON UPDATE restrict ON DELETE restrict);
+CREATE EXTENSION IF NOT EXISTS pgcrypto;

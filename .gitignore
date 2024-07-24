@@ -1,0 +1,11 @@
+.env
+.env.authorizer
+server.env
+test_views
+*.pem
+docker-compose.local.yml
+.env.*
+dup.sh
+.task.txt
+server.zip
+dupc.sh

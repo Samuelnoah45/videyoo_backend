@@ -1,0 +1,11 @@
+table:
+  name: request_types
+  schema: basic
+is_enum: true
+insert_permissions:
+  - role: super:admin
+    permission:
+      check: {}
+      columns:
+        - name
+    comment: ""

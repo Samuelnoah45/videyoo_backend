@@ -1,0 +1,18 @@
+{
+    "private": true,
+    "scripts": {
+        "hasura": "hasura --project graphql --envfile ../.env",
+        "hasura:console": "yarn hasura console --api-port 7770 --console-port 7771",
+        "hasura:staging": "hasura --project graphql --envfile ../.env.prod",
+        "hasura:staging:console": "hasura --project graphql --envfile ../.env.prod console --api-port 9990 --console-port 9991",
+        "hasura:production": "hasura --project graphql --envfile ../.env.prod",
+        "hasura:migrate": "yarn hasura migrate apply && yarn hasura metadata apply",
+        "hasura:migrate:status": "yarn hasura migrate status",
+        "hasura:ic": "yarn hasura metadata ic list",
+        "hasura:seed": "yarn hasura seeds apply"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "hasura-cli": "^2.1.0-beta.1"
+    }
+}

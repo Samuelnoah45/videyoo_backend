@@ -1,0 +1,30 @@
+
+
+1.Project Get Request
+2.Project Stock Our Request
+    Project Get Request Id
+3.Project_Purchase Request
+4.Purchase In Request
+    Type 
+    Project_Purchase Request Id
+    User_Purchase Request Id
+
+5.User get Request
+7.User Stock Our Request
+8.User Purchase Request
+
+
+1.Stock purchase in
+2.Stock out
+
+
+
+
+1.Project out request
+2.Project Stock Our Request
+3.Project Purchase Request
+3.Project Purchase in request
+
+
+
+
