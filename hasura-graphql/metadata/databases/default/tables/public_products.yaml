@@ -1,0 +1,144 @@
+table:
+  name: products
+  schema: public
+object_relationships:
+  - name: category
+    using:
+      foreign_key_constraint_on: category_id
+  - name: sub_category
+    using:
+      foreign_key_constraint_on: sub_category_id
+  - name: user
+    using:
+      foreign_key_constraint_on: created_by
+insert_permissions:
+  - role: stock-manager
+    permission:
+      check: {}
+      set:
+        created_by: x-hasura-User-id
+      columns:
+        - description
+        - measurement_unit
+        - model
+        - name
+        - created_at
+        - updated_at
+        - category_id
+        - created_by
+        - id
+        - sub_category_id
+    comment: ""
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - description
+        - measurement_unit
+        - model
+        - name
+        - created_at
+        - updated_at
+        - category_id
+        - created_by
+        - id
+        - sub_category_id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: org-member
+    permission:
+      columns:
+        - description
+        - measurement_unit
+        - model
+        - name
+        - created_at
+        - updated_at
+        - category_id
+        - created_by
+        - id
+        - sub_category_id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: project-manager
+    permission:
+      columns:
+        - description
+        - measurement_unit
+        - model
+        - name
+        - created_at
+        - updated_at
+        - category_id
+        - created_by
+        - id
+        - sub_category_id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: purchase-manager
+    permission:
+      columns:
+        - description
+        - measurement_unit
+        - model
+        - name
+        - created_at
+        - updated_at
+        - category_id
+        - created_by
+        - id
+        - sub_category_id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: stock-manager
+    permission:
+      columns:
+        - description
+        - measurement_unit
+        - model
+        - name
+        - created_at
+        - updated_at
+        - category_id
+        - created_by
+        - id
+        - sub_category_id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: super:admin
+    permission:
+      columns:
+        - description
+        - measurement_unit
+        - model
+        - name
+        - created_at
+        - updated_at
+        - category_id
+        - created_by
+        - id
+        - sub_category_id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: technical-project-manager
+    permission:
+      columns:
+        - description
+        - measurement_unit
+        - model
+        - name
+        - created_at
+        - updated_at
+        - category_id
+        - created_by
+        - id
+        - sub_category_id
+      filter: {}
+      allow_aggregations: true
+    comment: ""

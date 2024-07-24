@@ -1,0 +1,38 @@
+table:
+  name: measurment_units
+  schema: basic
+is_enum: true
+insert_permissions:
+  - role: super:admin
+    permission:
+      check: {}
+      columns:
+        - unit
+    comment: ""
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - unit
+      filter: {}
+    comment: ""
+  - role: super:admin
+    permission:
+      columns:
+        - unit
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+update_permissions:
+  - role: super:admin
+    permission:
+      columns:
+        - unit
+      filter: {}
+      check: {}
+    comment: ""
+delete_permissions:
+  - role: super:admin
+    permission:
+      filter: {}
+    comment: ""

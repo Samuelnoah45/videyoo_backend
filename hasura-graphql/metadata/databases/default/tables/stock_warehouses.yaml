@@ -1,0 +1,92 @@
+table:
+  name: warehouses
+  schema: stock
+array_relationships:
+  - name: warehouse_products
+    using:
+      foreign_key_constraint_on:
+        column: warehouse_id
+        table:
+          name: warehouse_products
+          schema: stock
+insert_permissions:
+  - role: super:admin
+    permission:
+      check: {}
+      columns:
+        - location
+        - name
+        - created_at
+        - id
+    comment: ""
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - location
+        - name
+        - created_at
+        - id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: org-member
+    permission:
+      columns:
+        - location
+        - name
+        - created_at
+        - id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: project-manager
+    permission:
+      columns:
+        - location
+        - name
+        - created_at
+        - id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: purchase-manager
+    permission:
+      columns:
+        - location
+        - name
+        - created_at
+        - id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: stock-manager
+    permission:
+      columns:
+        - location
+        - name
+        - created_at
+        - id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: super:admin
+    permission:
+      columns:
+        - location
+        - name
+        - created_at
+        - id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
+  - role: technical-project-manager
+    permission:
+      columns:
+        - location
+        - name
+        - created_at
+        - id
+      filter: {}
+      allow_aggregations: true
+    comment: ""
