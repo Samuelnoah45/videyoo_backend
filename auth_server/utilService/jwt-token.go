@@ -2,10 +2,9 @@ package utilService
 
 import (
 	"fmt"
-	"server/config"
-
-	authModel "server/pkgs/auth/models"
 	"time"
+	"server/config"
+	authModel "server/pkgs/auth/models"
 
 	"github.com/golang-jwt/jwt"
 )
@@ -24,14 +23,18 @@ func createJWTToken(payload map[string]interface{}, secretKey string, tokenExpir
 }
 
 func HasuraAccessToken(user authModel.User) (string, error) {
+	roles := user.UserRoles
+
 	payload := map[string]interface{}{
 		"sub": "12345",                               // The user ID
 		"iat": time.Now().Unix(),                     // The token issue time (UNIX timestamp)
 		"exp": time.Now().Add(time.Hour * 48).Unix(), // The token expiration time (UNIX timestamp)
-		"https://hasura.io/jwt/claims": map[string]interface{}{ // Hasura claims
-			"x-hasura-allowed-roles": user.UserRoles, // The allowed roles for the user
-			"x-hasura-default-role":  "org-member",   // The default role for the user
-			"x-hasura-user-id":       user.ID,        // The user ID
+		"metadata": map[string]interface{}{
+			"roles":                  roles,
+			"user_id":                user.ID,
+			"x-hasura-default-role":  "user",
+			"x-hasura-user-id":       user.ID,
+			"x-hasura-allowed-roles": roles,
 		},
 	}
 	tokenExpiration := time.Now().Add(time.Hour * 48).Unix()
@@ -41,7 +44,6 @@ func HasuraAccessToken(user authModel.User) (string, error) {
 	}
 	return token, nil
 }
-
 func EmailVerificationToken(email string) (string, error) {
 	payload := map[string]interface{}{
 		"sub":   "12345",                                 // The user ID

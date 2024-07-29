@@ -1,6 +1,16 @@
 type Mutation {
+  login(
+    email: String!
+    password: String!
+  ): loginOutPut
+}
+
+type Mutation {
   signup(
-    args: signUpInput!
+    first_name: String!
+    last_name: String!
+    email: String!
+    password: String!
   ): signUpOutput
 }
 
@@ -13,5 +23,11 @@ input signUpInput {
 
 type signUpOutput {
   token: String!
+  success: Boolean!
+}
+
+type loginOutPut {
+  token: String!
+  success: Boolean!
 }
 

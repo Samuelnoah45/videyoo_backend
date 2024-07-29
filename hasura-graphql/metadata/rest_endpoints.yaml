@@ -1,1 +1,18 @@
-[]
+- comment: ""
+  definition:
+    query:
+      collection_name: allowed-queries
+      query_name: get_user_all
+  methods:
+    - GET
+  name: get_user_all
+  url: get-user-all
+- comment: ""
+  definition:
+    query:
+      collection_name: allowed-queries
+      query_name: insert_rescipe
+  methods:
+    - POST
+  name: insert_rescipe
+  url: insert-rescipe

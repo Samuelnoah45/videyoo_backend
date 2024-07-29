@@ -1,8 +1,18 @@
 actions:
+  - name: login
+    definition:
+      kind: synchronous
+      handler: '{{ACTION_BASE_URL}}/login'
+    permissions:
+      - role: user
+      - role: anonymous
   - name: signup
     definition:
       kind: synchronous
       handler: '{{ACTION_BASE_URL}}/sign_up'
+    permissions:
+      - role: user
+      - role: anonymous
     comment: sign_up
 custom_types:
   enums: []
@@ -10,4 +20,5 @@ custom_types:
     - name: signUpInput
   objects:
     - name: signUpOutput
+    - name: loginOutPut
   scalars: []

@@ -1,1 +1,20 @@
-[]
+- name: allowed-queries
+  definition:
+    queries:
+      - name: insert_rescipe
+        query: |
+          mutation insert_rescipe {
+            insert_recipes(objects: {title:""}) {
+              returning {
+                id
+              }
+            }
+          }
+      - name: get_user_all
+        query: |
+          query get_user {
+            users {
+              first_name
+              last_name
+            }
+          }
