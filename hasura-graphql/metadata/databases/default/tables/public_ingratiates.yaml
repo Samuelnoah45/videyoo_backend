@@ -29,26 +29,5 @@ select_permissions:
       allow_aggregations: true
     comment: ""
 update_permissions:
-  - role: user
-    permission:
-      columns:
-        - name
-        - quantity
-        - recipe_id
-        - unit
-      filter:
-        recipe:
-          user_recipe:
-            user_id:
-              _eq: X-Hasura-User-Id
-      check: null
-    comment: ""
+
 delete_permissions:
-  - role: user
-    permission:
-      filter:
-        recipe:
-          user_recipe:
-            user_id:
-              _eq: X-Hasura-User-Id
-    comment: ""

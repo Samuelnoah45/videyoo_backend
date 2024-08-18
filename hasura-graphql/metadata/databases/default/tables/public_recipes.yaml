@@ -2,9 +2,7 @@ table:
   name: recipes
   schema: public
 object_relationships:
-  - name: user_recipe
-    using:
-      foreign_key_constraint_on: user_id
+
 array_relationships:
   - name: recipe_comments
     using:
@@ -20,13 +18,7 @@ array_relationships:
         table:
           name: ingratiates
           schema: public
-  - name: recipes
-    using:
-      foreign_key_constraint_on:
-        column: user_id
-        table:
-          name: recipes
-          schema: public
+
 insert_permissions:
   - role: user
     permission:
@@ -58,24 +50,5 @@ select_permissions:
       allow_aggregations: true
     comment: ""
 update_permissions:
-  - role: user
-    permission:
-      columns:
-        - ingredient_id
-        - instruction
-        - preparation_time
-        - title
-      filter:
-        user_recipe:
-          user_id:
-            _eq: X-Hasura-User-Id
-      check: null
-    comment: ""
+
 delete_permissions:
-  - role: user
-    permission:
-      filter:
-        user_recipe:
-          user_id:
-            _eq: X-Hasura-User-Id
-    comment: ""
