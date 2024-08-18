@@ -1,6 +1,3 @@
-- "!include public_comments.yaml"
-- "!include public_ingratiates.yaml"
-- "!include public_recipes.yaml"
 - "!include public_roles.yaml"
 - "!include public_units.yaml"
 - "!include public_user_roles.yaml"
