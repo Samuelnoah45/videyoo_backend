@@ -14,6 +14,6 @@ RUN go mod download
 
 RUN go mod tidy
 
-RUN go build -o server
+RUN go build -o auth_server
 
-CMD ["/server/server"]
+CMD ["/auth_server/auth_server"]
