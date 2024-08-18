@@ -6,7 +6,7 @@ COPY ./auth_server /auth_server
 
 # COPY ./privateKey.pem /server/privateKey.pem
 
-WORKDIR /server
+WORKDIR /auth_server
 
 # ENV GIN_MODE=${GIN_MODE}
 
@@ -14,6 +14,6 @@ RUN go mod download
 
 RUN go mod tidy
 
-RUN go build -o auth_server
+RUN go build -o server
 
 CMD ["/server/server"]
