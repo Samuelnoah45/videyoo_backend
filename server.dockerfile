@@ -1,6 +1,6 @@
 FROM golang:alpine
 
-COPY ./server /server
+COPY ./auth_server /auth_server
 
 # COPY ./publicKey.pem /server/publicKey.pem
 

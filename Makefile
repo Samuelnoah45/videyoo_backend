@@ -23,7 +23,7 @@ metadata_apply:
 
 #apply migrations
 migrate_apply:
-	hasura migrate apply --envfile .env --project ./hasura-graphql
+	hasura migrate apply --envfile ../.env --project ./hasura-graphql
 metadata_prod:
 	hasura metadata apply --envfile ../.env.prod --project ./hasura-graphql
 
