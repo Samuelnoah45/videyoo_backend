@@ -1,0 +1,1 @@
+drop schema "influencer" cascade;
